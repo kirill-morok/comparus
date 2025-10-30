@@ -1,0 +1,27 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:16
+    environment:
+      POSTGRES_USER: testuser
+      POSTGRES_PASSWORD: testpass
+      POSTGRES_DB: db1
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./src/main/resources/db/postgres/init.sql:/docker-entrypoint-initdb.d/init.sql
+    command: [ "postgres", "-c", "TimeZone=UTC", "-c", "log_timezone=UTC" ]
+
+  mysql:
+    image: mysql:8.4
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpass
+      MYSQL_DATABASE: db2
+      MYSQL_USER: testuser
+      MYSQL_PASSWORD: testpass
+      TZ: UTC
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./src/main/resources/db/mysql/init.sql:/docker-entrypoint-initdb.d/init.sql
