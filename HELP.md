@@ -41,7 +41,7 @@ This service provides a single REST API endpoint that queries multiple databases
 ### 1. Clone the Repository
 
 ```bash 
-git clone <repository-url> cd comparus
+git clone https://github.com/kirill-morok/comparus.git
 ```
 
 ### 2. Start Database Services
